@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_14/firebase_services/auth_services.dart';
+import 'package:flutter_application_14/firebase_services/firestore_services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -58,6 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 authServices.loginWithGoogle();
               },
               child: Text("Google"),
+            ),
+            TextButton(
+              onPressed: () async{
+                await AuthServices().register("ahmed@gmail.com", "12345678");
+                await FirestoreServices().set("Ahmed Hassan", "0102226222", "Saudi Arabia");
+              },
+              child: Text("Sign up with extra data"),
             ),
           ],
         ),
